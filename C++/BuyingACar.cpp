@@ -11,7 +11,7 @@ class BuyCar
     std::vector<int> answer;
     answer.reserve(2);
     
-    double priceOld = static_cast<double>(startPriceOld);
+    double priceOld = static_cast<double>(startPriceOld);   //we want to convert startPriceOld into double and store it into another var that is double
     double priceNew = static_cast<double>(startPriceNew);
 
     while (result < 0)
