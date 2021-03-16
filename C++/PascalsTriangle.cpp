@@ -1,18 +1,16 @@
 #include <vector>
 
-long long fact(long long a)
+long long binCoef(int n, int k)
 {
-    long long init = 1;
-    for (int i = 2; i <= a; i++)
+    long long res = 1;
+    if (k > n - k)
+        k = n - k;
+    for (int i = 0; i < k; ++i)
     {
-        init *= i;
+        res *= (n - i);
+        res /= (i + 1);          //res = ((n - i)/(i+1)) -> n/1 * (n-1)/2 * ... * (n-k+1)/k! i.e nCk. C(n,k) = C(n,n-k).
     }
-    return init;
-}
-
-long long comb(long long a, long long b)
-{
-    return fact(a) / (fact(b) * fact(a - b));
+    return res;
 }
 
 std::vector<long long> pascalsTriangle(int n)
@@ -22,7 +20,7 @@ std::vector<long long> pascalsTriangle(int n)
     {
         for (int j = 0; j <= i; j++)
         {
-            result.push_back(comb(i, j));
+            result.push_back(binCoef(i, j));
         }
     }
   return result;
